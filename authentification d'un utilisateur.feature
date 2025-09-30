@@ -1,4 +1,4 @@
-#language = fr
+# language: fr
 
 Fonctionnalité: Authentification d'un utlilisateur
 

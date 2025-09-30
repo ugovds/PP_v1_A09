@@ -1,4 +1,4 @@
-#language = fr
+# language: fr
 
 Fonctionnalité: Signalement d'un incident
 

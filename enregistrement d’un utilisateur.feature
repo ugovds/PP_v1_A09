@@ -1,4 +1,4 @@
-#language = fr
+# language: fr
 
 Fonctionnalité: Enregistrement d'un nouvel utlilisateur dans le système
 
