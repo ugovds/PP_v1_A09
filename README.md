@@ -1,4 +1,4 @@
-LINFO1212 - Projet d'approfondissement en sciences informatiques
+# LINFO1212 - Projet d'approfondissement en sciences informatiques
 Groupe A09
 Lamand Prosper
 Toscas Vincent
