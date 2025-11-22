@@ -1,83 +1,79 @@
-<!doctype html>
-
-<html>
-
+<!DOCTYPE html>
+<html lang="fr">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plateforme de signalement d'incidents pour Ottignies-Louvain-la-Neuve">
+    <title>Accueil - Incidents Ottignies-Louvain-la-Neuve</title>
     <link rel="stylesheet" href="styles.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Main page</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/web-app.css">
   </head>
   <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
- <a class="navbar-brand" href="#" style="max-width: 3%;">
-    <img src="safe.png" class="img-fluid">
- </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <header>
+      <nav>
+        <a href="index.html" class="logo">
+          <img src="safe.png" alt="Logo Sécurité">
+        </a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="active">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a href="report.html">Signaler un incident</a>
+          </li>
+        </ul>
+        <div class="user-info">
+          <span class="username">Utilisateur</span>
+          <a href="connexion.html" class="btn btn-secondary">Se connecter</a>
+        </div>
+      </nav>
+    </header>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="report.html">Signaler un incident</a>
-      </li>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </ul>
-            <span class="nav-link"> Username</span>
-      <li class="nav-item">
-        <a class="nav-link" href="connexion.html">Se connecter</a>
-      </li>
-  </div>
-</nav>
-<section>
-    <h1>Historique des incidents dans l'espace public</h1>
-    <p>Date : <span id="date"></span>.</p>
+    <main>
+      <section>
+        <h1>Historique des incidents dans l'espace public</h1>
+        <p>Consultez tous les incidents signalés à Ottignies-Louvain-la-Neuve.</p>
+        <p><strong>Dernière mise à jour :</strong> <span id="date"></span></p>
+      </section>
 
-  <script>
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById("date").textContent =
-      new Date().toLocaleDateString("fr-FR", options);
-  </script>
-    </p>
-</section>
-<table style="width:50%">
-  <tr>
-    <th>Description</th>
-    <th>Adresse</th>
-    <th>Rapporté par</th>
-    <th>Date</th>
-  </tr>
-  <tr>
-    <td>Louis</td>
-    <td>Bernard</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Raphael</td>
-    <td>Dubois</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>Alexandre</td>
-    <td>Martin</td>
-    <td>80</td>
-  </tr>
-</table>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+      <section>
+        <h2>Incidents récents</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Adresse</th>
+              <th scope="col">Rapporté par</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nid-de-poule en élargissement</td>
+              <td>Rue de Namur, 45</td>
+              <td>Jean D.</td>
+              <td>22/11/2025</td>
+            </tr>
+            <tr>
+              <td>Feu de circulation défaillant</td>
+              <td>Avenue Foch, 12</td>
+              <td>Marie L.</td>
+              <td>21/11/2025</td>
+            </tr>
+            <tr>
+              <td>Banc public détérioré</td>
+              <td>Parc du Chemin de Ronde</td>
+              <td>Pierre M.</td>
+              <td>20/11/2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
 
+    <script>
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      document.getElementById("date").textContent =
+        new Date().toLocaleDateString("fr-FR", options);
+    </script>
   </body>
 </html>
