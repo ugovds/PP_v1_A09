@@ -13,6 +13,7 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f8f9fa;
+  /* leave space for the fixed header */
   padding-top: 80px;
 }
 
@@ -32,14 +33,29 @@ nav {
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f77b4;
   text-decoration: none;
-  max-width: 60px;
 }
 
 .logo img {
-  max-width: 100%;
-  height: auto;
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.logo span {
+  font-size: 1rem;
+  color: inherit;
 }
 
 .nav-menu {
@@ -263,6 +279,7 @@ button:hover,
 .info-box strong {
   color: #1f77b4;
 }
+
 
 @media (max-width: 768px) {
   body {
