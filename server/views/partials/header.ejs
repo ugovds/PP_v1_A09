@@ -1,0 +1,23 @@
+<header>
+<nav>
+<a href="/" class="logo">
+    <img src="safe.png" alt="Logo Sécurité">
+</a>
+<ul class="nav-menu">
+    <li class="nav-item">
+    <a href="/" class="active">Accueil</a>
+    </li>
+    <li class="nav-item">
+    <a href="/report">Signaler un incident</a>
+    </li>
+</ul>
+<div class="user-info">
+    <span class="username"><%= username ? username : "" %></span>
+    <% if(!username){ %>
+    <a href="/connexion" class="btn btn-secondary">Se connecter</a>
+    <% } else { %>
+    <a href="/logout" class="btn btn-secondary">Se déconnecter</a>
+    <% } %>
+</div>
+</nav>
+</header>

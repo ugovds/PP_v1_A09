@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plateforme de signalement d'incidents pour Ottignies-Louvain-la-Neuve">
+    <title>Accueil - Incidents Ottignies-Louvain-la-Neuve</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <%- include('partials/header', { username: username, page: 'index' }) %>
+
+    <main>
+      <section>
+        <h1>Historique des incidents dans l'espace public</h1>
+        <p>Consultez tous les incidents signalés à Ottignies-Louvain-la-Neuve.</p>
+        <p>Dernière mise à jour : <%= date.toDateString() %></p>
+      </section>
+
+      <section>
+        <h2>Incidents récents</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Adresse</th>
+              <th scope="col">Rapporté par</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nid-de-poule en élargissement</td>
+              <td>Rue de Namur, 45</td>
+              <td>Jean D.</td>
+              <td>22/11/2025</td>
+            </tr>
+            <tr>
+              <td>Feu de circulation défaillant</td>
+              <td>Avenue Foch, 12</td>
+              <td>Marie L.</td>
+              <td>21/11/2025</td>
+            </tr>
+            <tr>
+              <td>Banc public détérioré</td>
+              <td>Parc du Chemin de Ronde</td>
+              <td>Pierre M.</td>
+              <td>20/11/2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    
+  </body>
+</html>
