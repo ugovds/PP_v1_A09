@@ -19,8 +19,9 @@
     %>
         <div class="incident-list">
             <% incidents.forEach(incident => { %>
-                <div class="incident-card">
+                <a class="incident-card" href="/incident/<%= incident._id %>">
                     <h2><%= incident.type.toUpperCase() %></h2>
+                    <p class="incident-status">Statut : <strong><%= incident.status || 'en cours' %></strong></p>
                     <p class="incident-date">
                         Observé le : <%= new Date(incident.date).toLocaleDateString('fr-FR') %>
                     </p>
@@ -30,6 +31,7 @@
                     <p class="incident-description">
                         Description : <%= incident.description %>
                     </p>
+                </a>
             <% }) %>
         </div>
     <% } else { %>

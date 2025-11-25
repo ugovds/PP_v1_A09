@@ -138,6 +138,34 @@ table {
   margin-top: 1rem;
 }
 
+.incident-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.incident-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+.incident-card:hover {
+  box-shadow: 0 4px 12px rgba(31,119,180,0.12);
+  transform: translateY(-3px);
+}
+
+.incident-card h2 { margin-bottom: 0.25rem; }
+.incident-status { color: #555; font-weight: 600; margin-bottom: 0.5rem; }
+
+/* Ensure no child text is underlined */
+a.incident-card, a.incident-card * { text-decoration: none; }
+
 thead {
   background-color: #1f77b4;
   color: white;

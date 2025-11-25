@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail de l'incident</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('partials/header', { username: username, page: 'index' }) %>
+  <main>
+    <section>
+      <h1>Détail de l'incident</h1>
+      <% if (incident) { %>
+        <div class="incident-detail">
+          <h2><%= incident.type.toUpperCase() %></h2>
+          <p><strong>Statut :</strong> <%= incident.status || 'en cours' %></p>
+          <p><strong>Date :</strong> <%= new Date(incident.date).toLocaleString('fr-FR') %></p>
+          <p><strong>Localisation :</strong> <%= incident.location %></p>
+          <p><strong>Description :</strong></p>
+          <p><%= incident.description %></p>
+          <% if (incident.details) { %>
+            <p><strong>Détails :</strong></p>
+            <p><%= incident.details %></p>
+          <% } %>
+          <% if (incident.reporter) { %>
+            <p><em>Signalé par : <%= incident.reporter %></em></p>
+          <% } %>
+          <p><a href="/">Retour à l'accueil</a></p>
+        </div>
+      <% } else { %>
+        <p>Incident introuvable.</p>
+        <p><a href="/">Retour à l'accueil</a></p>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>

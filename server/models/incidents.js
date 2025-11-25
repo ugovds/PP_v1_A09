@@ -28,6 +28,17 @@ const IncidentsSchema = new mongoose.Schema({
         required : false
     }
 
+    ,
+    reporter: {
+        type: String,
+        required: false
+    },
+
+    status: {
+        type: String,
+        required: true,
+        default: 'en cours'
+    }
 
 })
 
