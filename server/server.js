@@ -1,9 +1,14 @@
 var express = require('express');
 var session = require('express-session');
+var mongoose = require('mongoose')
 var app = express ();
 var bodyParser = require("body-parser");
 var https = require('https');
 var fs = require('fs');
+var Incidents = require('./models/incidents')
+var User = require('./models/user')
+
+const mongodb = "mongodb://localhost:27017/PP"
 
 const port = 8080;
 const default_passwrd = "1234";
@@ -24,13 +29,50 @@ app.use(session({
     maxAge: 3600000
   }
 }));
+
+
 app.get('/', (req, res)=> {
     const dateAjrd = new Date();
     res.render('index', {date: dateAjrd, username:req.session.username});
 });
+
+
 app.get('/report', (req, res) => {
     res.render('report', { username: req.session.username });
 });
+
+
+app.get('/connexion', (req, res) => {
+    res.render('connexion', { username: req.session.username, error: null });
+});
+
+
+app.post('/report', async (req, res) => {
+    try {
+        const { type, description, date, location, details } = req.body; 
+        
+        const newIncident = new Incidents({
+            type: type,
+            description: description,
+            date: date, 
+            location: location,    
+            details: details,
+        });
+
+        // Sauvegarde dans la base de données
+        await newIncident.save();
+
+        // Affichage du message de succès et renvoi sur la même page
+        res.render('report', { username: req.session.username });
+    } catch (error) {
+        console.error("Erreur lors de la soumission de l'incident:");
+        res.render('report', { username: req.session.username });
+
+
+    }
+});
+
+
 app.get('/connexion', (req, res) => {
     res.render('connexion', { username: req.session.username, error: null });
 });
@@ -50,6 +92,26 @@ app.get('/logout', (req, res) => {
 });
 
 
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        res.redirect('/');
+    });
+});
+
+
 app.listen(port, ()=>{
     console.log(`Server started at http://localhost:${port}`);
 });
+
+
+const connectDB = async () =>{
+    try{
+        await mongoose.connect(mongodb)
+        console.log("Db is running...")
+
+    }catch{
+        console.log("Error")
+    }
+}
+
+connectDB()
