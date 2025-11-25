@@ -5,8 +5,9 @@ var app = express ();
 var bodyParser = require("body-parser");
 var https = require('https');
 var fs = require('fs');
-var Incidents = require('./models/incidents')
-var User = require('./models/user')
+var Incident = require('./models/incidents')
+var User = require('./models/user');
+const { createCipheriv } = require('crypto');
 
 const mongodb = "mongodb://localhost:27017/PP"
 
@@ -31,9 +32,16 @@ app.use(session({
 }));
 
 
-app.get('/', (req, res)=> {
-    const dateAjrd = new Date();
-    res.render('index', {date: dateAjrd, username:req.session.username});
+app.get('/', async (req, res)=> {
+    try {
+        const dateAjrd = new Date();
+        const incidents = await Incident.find().sort({ createdAt: -1 }); 
+
+        res.render('index', { date:dateAjrd, username:req.session.username,incidents:incidents});
+    } catch (error) {
+        console.error("erreur", error);
+        res.render('index', {date: new Date(), username: req.session.username,incidents: []});
+    }
 });
 
 
@@ -51,7 +59,7 @@ app.post('/report', async (req, res) => {
     try {
         const { type, description, date, location, details } = req.body; 
         
-        const newIncident = new Incidents({
+        const newIncident = new Incident({
             type: type,
             description: description,
             date: date, 
@@ -59,10 +67,9 @@ app.post('/report', async (req, res) => {
             details: details,
         });
 
-        // Sauvegarde dans la base de données
+
         await newIncident.save();
 
-        // Affichage du message de succès et renvoi sur la même page
         res.render('report', { username: req.session.username });
     } catch (error) {
         console.error("Erreur lors de la soumission de l'incident:");
